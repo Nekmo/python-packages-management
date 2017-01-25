@@ -185,3 +185,74 @@ Por si no se encontrase instalado en el sistema, podemos instalarlo con::
 Y si no con::
 
     $ python get-pip.py
+    
+    
+----
+
+Conflictos entre paquetes
+=========================
+
+Ya sabemos cómo instalar paquetes externos. 
+
+¿Pero qué pasa si tenemos conflictos entre ellos?
+
+
+----
+
+Ejemplo: tenemos 2 proyectos, A y B, con dependencia en diferentes versiones de Django.
+
+Proyecto A: requiere Django >= 1.8, <= 1.10.
+Proyecto B: requiere Django <=1.7, >= 1.4.
+
+----
+
+Solución: virtualenvs
+
+----
+
+Virtualenvs
+===========
+Son entornos de Python independientes al del sistema, con sus propios paquetes instalados.
+
+----
+
+Gracias a los virtualenvs, podemos tener 2 entornos distintos: uno para el proyecto A, 
+con Django >= 1.9, y otro con Django <= 1.7 en el proyecto B, además de todas sus dependencias.
+
+----
+
+Cómo crear un virtualenv
+------------------------
+Tras instalar ``virtualenv``, podemos crear un virtualenv con::
+    
+    [nekmo@homura /tmp]$ virtualenv venv
+    Running virtualenv with interpreter /usr/bin/python2
+    New python executable in venv/bin/python2
+    Also creating executable in venv/bin/python
+    Installing setuptools, pip...done.
+
+----
+
+Cómo entrar en un virtualenv
+----------------------------
+Debemos ejecutar::
+    
+    [nekmo@homura /tmp]$ source venv/bin/activate
+    (venv)[nekmo@homura /tmp]$ 
+    
+Véase que ahora, al inicio del *prompt*, tenemos entre paréntesis el nombre del virtualenv::
+    
+    **(venv)**[nekmo@homura /tmp]$ 
+    
+Esto significa, que tenemos el virtualenv activado. Podremos movernos con libertad, y seguiremos en el virtualenv mientras aparezca delante ese indicativo.
+
+----
+
+Cómo salir de un virtualenv
+---------------------------
+Debemos ejecutar ``deactivate``. Tras ejecutarlo, desaparecerá el nombre del virtualenv en el prompt::
+    
+    (venv)[nekmo@homura /tmp]$ deactivate 
+    [nekmo@homura /tmp]$
+
+

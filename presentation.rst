@@ -217,7 +217,10 @@ Son entornos de Python independientes al del sistema, con sus propios paquetes i
 ----
 
 Gracias a los virtualenvs, podemos tener 2 entornos distintos: uno para el proyecto A, 
-con Django >= 1.9, y otro con Django <= 1.7 en el proyecto B, además de todas sus dependencias.
+con Django >= 1.9, y otro con Django <= 1.7 en el proyecto B.
+
+Además, podemos usar los virtualenvs para probar paquetes sin instalarlos a nivel del sistema,
+o para crear entornos a replicar en otros sistemas, cosa que veremos más adelante.
 
 ----
 
@@ -255,4 +258,143 @@ Debemos ejecutar ``deactivate``. Tras ejecutarlo, desaparecerá el nombre del vi
     (venv)[nekmo@homura /tmp]$ deactivate 
     [nekmo@homura /tmp]$
 
+Tras salir del virtualenv, podremos crear otro donde podremos instalar otros paquetes, manteniéndose aislados.
+
+----
+
+Instalar virtualenv
+-------------------
+Podemos instalarlo bien por el sistema, o haciendo uso de pip, como cualquier otro paquete:
+
+    $ sudo pip install virtualenv
+    
+----
+
+Cómo funciona
+-------------
+El archivo ``./bin/activate`` del ``venv`` es un fichero en bash, que si lo leemos, encontramos::
+
+    PATH="$VIRTUAL_ENV/bin:$PATH"
+    export PATH
+
+Con esto lo que hacemos es añadir el directorio ``./bin/`` al ``$PATH``.
+
+----
+
+Si miramos este directorio, encontramos::
+
+    (test)[nekmo@homura /tmp/env]$ ls -1
+    activate
+    ...
+    easy_install
+    pip
+    **python**
+    ...
+
+----
+
+Esto *sustituye* el binario de ``python`` del sistema por el del virtualenv.
+
+Para determinar el directorio de las bibliotecas, lo que hace es buscarse el directorio que contiene ``./lib/pythonX.Y/os.py`` desde el directorio del ejecutable de Python. Si no se encuentra, se van bajando niveles hasta encontrarlo::
+
+
+    ./venv/bin/lib/python2.7/os.py << No existe, sigo bajando...
+    ./venv/lib/python2.7/os.py << ¡Existe! ¡Usaré este directorio!
+    
+----
+
+Pero ahora tengo muchos virtualenvs...
+
+¿cómo los gestiono?
+
+----
+
+Virtualenvwrapper
+=================
+Permite gestionar los virtualenvs identificándolos por un nombre, y organizados en un directorio común. Para instalarlo, usamos de nuevo ``pip``::
+
+    $ sudo pip install virtualenv
+    
+----
+
+Configuración
+-------------
+En el ``.bashrc``, añadimos lo siguiente:
+
+.. code-block:: bash
+
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/Projects
+    source `which virtualenvwrapper.sh`
+
+La primera línea es donde se guardarán los *virtualenvs*. La segunda, donde creamos nuestros *proyectos y trabajos*. Veremos más sobre esto más adelante.
+
+----
+
+Crear un virtualenv con virtualenvwrapper
+-----------------------------------------
+Usamos el comando ``mkvirtualenv <name>``. Si ponemos el argumento ``-p <binario python>``, podremos cambiar el ejecutable de Python a usar::
+
+    $ mkvirtualenv -p /usr/bin/python3 my-venv
+    
+Al crear un proyecto, entraremos automáticamente en el.
+
+----
+
+Salir y entrar en el virtualenv
+-------------------------------
+Para salir del virtualenv, el comando es igual que con los virtualenv de serie::
+
+    $ deactivate
+    
+Y para volver a entrar, usamos ``workon``::
+
+    $ workon my-venv
+    
+----
+
+Proyectos
+---------
+Cuando se crea un virtualenv con ``mkproject <project name>``, se crea un virtualenv y adicionalmente un directorio en ``$PROJECT_HOME``, que es nuestro directorio de proyectos. Cada vez que se entre en el virtualenv, se activará el virtualenv y además, se accederá el directorio del proyecto::
+
+    mkproject my-project
+
+El resto de funciones son exactamente iguales a las de cualquier otro virtualenv.
+    
+----
+
+Comandos fuera del virtualenv
+-----------------------------
+
+* ``workon <venv>``	Entrar en un virtualenv
+* ``mkvirtualenv <venv>``: **Crear** un virtualenv
+* ``mkproject <proj>``: **Crea** un directorio de **proyecto** con su correspondiente virtualenv
+* ``mktmpenv``: **Crea** un virtualenv sin nombre y **temporal**, que al hacer deactivate se autodestruye.
+* ``rmvirtualenv <venv>``: **Borrar** un virtualenv. En el caso de proyectos, no borra el dir. de proyecto.
+* ``allvirtualenv <command>``: **Ejecutar** un comando en **todos los venv**. Útil para actualizar pip.
+
+----
+
+Comandos dentro del virtualenv
+------------------------------
+
+* ``deactivate``	Salir del virtualenv actual
+* ``cdvirtualenv``	Ir al directorio ~/.virtualenvs/<venv>
+* ``cdsitepackages``	Ir al directorio ~/.virtualenvs/<venv>/lib/PythonX.Y/site-packages
+* ``cdproject``	En el caso de proyectos, volver al directorio del proyecto.
+* ``wipeenv``	Borrar todos los paquetes del venv.
+* ``add2virtualenv <dir 1>[ <dir 2>]``	Permite añadir directorios al site-packages del virtualenv sin instalarlos
+* ``toggleglobalsitepackages``	Permite o deshabilita que se pueda acceder a paquetes del sistema en el virtualenv.
+
+----
+
+Scripts personalizables (hooks)
+-------------------------------
+*Virtualenvwrapper* permite personalizar las acciones cuando se interactúa con los virtualenvs. Por ejemplo, ``postactivate`` permite ejecutar cuandos al activar el virtualenv, o ``postmkvirtualenv`` ejecutar comandos al crear un nuevo virtualenv. Esto puede usarse para iniciar servicios o instalar paquetes.
+
+Un listado completo de los scripts se encuentra en: http://virtualenvwrapper.readthedocs.io/en/latest/scripts.html
+
+Es posible crear scripts por cada virtualenv o de forma global.
+
+----
 

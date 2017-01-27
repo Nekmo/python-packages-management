@@ -222,6 +222,8 @@ con Django >= 1.9, y otro con Django <= 1.7 en el proyecto B.
 Además, podemos usar los virtualenvs para probar paquetes sin instalarlos a nivel del sistema,
 o para crear entornos a replicar en otros sistemas, cosa que veremos más adelante.
 
+Los virtualenvs también nos salvan de sorpresas al actualizar el sistema: un ``apt upgrade`` podría romper nuestros proyectos sin saberlo.
+
 ----
 
 Cómo crear un virtualenv
@@ -398,3 +400,8 @@ Es posible crear scripts por cada virtualenv o de forma global.
 
 ----
 
+Requirements
+============
+Tras instalar los paquetes que necesitamos, podemos querer replicar la misma instalación que ya funciona en otro equipo, como por ejemplo pasarlo a producción. Esto podemos lograrlo gracias al archivo ``requirements.txt``.
+
+En este archivo apuntamos las dependencias que 

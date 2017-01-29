@@ -404,4 +404,83 @@ Requirements
 ============
 Tras instalar los paquetes que necesitamos, podemos querer replicar la misma instalación que ya funciona en otro equipo, como por ejemplo pasarlo a producción. Esto podemos lograrlo gracias al archivo ``requirements.txt``.
 
-En este archivo apuntamos las dependencias que 
+En este archivo apuntamos las dependencias necesarias para que un proyecto funcione. Por ejemplo::
+
+    requirements.txt
+    ----------------
+    Django>=1.9.1
+    six==1.10.0
+    appdirs==1.4.0
+    
+----
+
+Luego podemos instalar las dependencias mediante::
+
+    pip install -r requirements.txt
+    
+Con esto podemos replicar la instalación de la máquina original en otras máquinas.
+
+----
+
+pip freeze
+----------
+El comando ``pip freeze`` nos permite generar un listado de las dependencias instaladas con la versión con el formato ``paquete==versión`` por cada línea. Podemos usar este comando para generar el archivo ``requirements.txt`` con las dependencias exactas que hay en el virtualenv actual::
+
+    $ pip freeze > requirements.txt
+    
+----
+
+Constraints
+-----------
+No obstante, aunque el método anterior asegura que se replique el entorno al 100%, en ocasiones podemos no desear instalar ciertas cosas, como dependencias para desarrollo, o que instalamos para pruebas, pero también queremos asegurar que se instalan las versiones correctas de los paquetes y sus dependencias, para evitar problemas. Para ello podemos usar el constraints::
+
+    $ pip freeze > constraints.txt
+  
+----
+  
+Luego, en el requirements especificamos lo que nosotros quisimos instalar explícitamente, y el constraints se asegurará de instalar las versiones correctas de los paquetes y sus dependencias, pero no se instalarán los paquetes del constraints que no estén especificados en el requirements::
+
+    requirements.txt
+    ----------------
+    -c constraints.txt
+    pandas
+  
+----
+  
+Y el ``constraints.txt`` generado automáticamente usando ``pip freeze > constraints.txt``::
+
+    constraints.txt
+    ---------------
+    appdirs==1.4.0
+    numpy==1.12.0
+    packaging==16.8
+    pandas==0.19.2
+    pyparsing==2.1.10
+    python-dateutil==2.6.0
+    pytz==2016.10
+    six==1.10.0
+
+----
+    
+Sobre esta presentación...
+==========================
+
+* **Código fuente presentación:** https://github.com/Nekmo/python-packages-management
+    
+.. note::
+    si te ha gustado la presentación, puedes verla en mi Github, y no olvidéis darle a like :)
+
+----
+    
+:id: end
+
+¡Muchas gracias a todos!
+========================
+
+* **Sitio web:** http://nekmo.com
+* **Email:** contacto@nekmo.com
+* **Telegram:** @nekmo
+* **Twitter:** @nekmocom
+
+.. note::
+    Muchas gracias. Por si queréis hablar conmigo, podéis hacerlo por estos medios, o luego al final.

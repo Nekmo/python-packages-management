@@ -461,6 +461,18 @@ Y el ``constraints.txt`` generado automáticamente usando ``pip freeze > constra
     six==1.10.0
 
 ----
+
+Otras utilidades
+================
+
+* ``pipdeptree``: Representa las dependencias instaladas en forma de árbol. Ayuda a comprender qué paquete instaló cual.
+* ``Pipfile``: Otra forma de trabajar con los archivos de requirements, que facilita distinguir entre entornos y qué paquetes se instalaron explícitamente.
+* ``pipenv``: Aúna en uno ``virtualenv``, ``Pipfile`` y ``Pip``. Crea virtualenvs automáticamente en tu proyecto.
+* ``pip-tools``: Ayuda a mantener los paquetes actualizados. Usando archivos de dependencias propios, se compilan los archivos de requirements.
+* ``compare-requirements``: Compara archivos de ``requirements.txt`` y permite compararlos con los requirements del venv.
+* ``curd``: Alternativa compatible con ``pip``, que le ofrece mayor velocidad en la instalación de paquetes.
+
+----
     
 Sobre esta presentación...
 ==========================

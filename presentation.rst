@@ -2,6 +2,7 @@
 .. title: Gestión de paquetes y entornos en Python
 
 :data-transition-duration: 500
+:css: css/presentation.css
 
 ----
 
@@ -17,13 +18,14 @@ Gestión de paquetes y entornos en Python
 
 Se dice que...
 
-Python trae baterías incluidas
+Python trae **baterías incluidas**
 
 ----
 
 :id: baterias-imagen
 
 .. image:: images/Python_batteries_included.jpg
+   :height: 300px
 
 ----
 
@@ -41,7 +43,7 @@ CASI
 
 :id: usar-python
 
-Cuando Python no incluye lo que necesitamos, podemos instalarlo a través de Pip.
+Cuando Python no incluye lo que necesitamos, podemos instalarlo a través de ``Pip``.
 
 ----
 
@@ -49,7 +51,7 @@ Cuando Python no incluye lo que necesitamos, podemos instalarlo a través de Pip
 
 Pip
 ===
-Es el gestor de paquetes de Python que sustituye a ``easy_install`` desde 2008. 
+Es el **gestor de paquetes** de Python que sustituye a ``easy_install`` desde *2008*. 
 
 ----
 
@@ -80,9 +82,10 @@ Para instalar el paquete ``requests``, que facilita las consultas http:
 
 :id: donde-paquetes-2
 
-La mayoría de paquetes Python dicen cómo instalarlos usando Pip
+La mayoría de paquetes Python dicen **cómo instalarlos** *usando Pip*
 
-<imagen sqlalchemy>
+.. image:: images/pip_install_sqlalchemy.png
+   :height: 300px
 
 ----
 
@@ -94,21 +97,21 @@ Subidos en **Pypi**. Puedes buscar los paquetes existentes en:
 
 https://pypi.python.org/pypi
 
-Además, puedes subir tus propios paquetes.
+Además, puedes subir **tus propios paquetes**.
 
 ----
 
 :id: pypi-2
 
-<imagen pypi python>
+.. image:: images/pypi-python-org.png
 
 ----
 
 :id: pypi-3
 
-También puedes echarle un vistazo al próximo portal de *Pypi*:
+También puedes echarle un vistazo al **próximo** portal de *Pypi*:
 
-<imagen pypi.org>
+.. image:: images/pypi-org.png
 
 ----
 
@@ -117,7 +120,7 @@ También puedes echarle un vistazo al próximo portal de *Pypi*:
 Especificar versión
 -------------------
 
-Por si hubiese incompatibilidades, es posible restringir la versión:
+Por si hubiese incompatibilidades, es posible **restringir la versión**:
 
 .. code-block::
 
@@ -140,7 +143,7 @@ Puedes instalarlo de infinidad de otras formas:
 
 .. code-block::
 
-    pip install git+https://github.com/Nekmo/os3.git@master#egg=os3
+    $ pip install git+https://github.com/Nekmo/os3.git@master#egg=os3
 
 ----
 
@@ -149,19 +152,23 @@ Puedes instalarlo de infinidad de otras formas:
 Otros comandos de ``pip`` de interés
 ------------------------------------
 
-* **pip download <package>**: sólo descargar el paquete.
-* **pip list**: listar los paquetes instalados.
-* **pip uninstall <package>**: desinstalar el paquete.
-* **pip search <query>**: Buscar en Pypi.
-* **pip check**: Comprobar incompatibilidades entre paquetes instalados.
-* **pip freeze**: Generar listado de dependencias. Profundizaremos sobre este comando más adelante.
+* ``pip download <package>``: sólo **descargar** el paquete.
+* ``pip list``: **listar** los paquetes instalados.
+* ``pip uninstall <package>``: **desinstalar** el paquete.
+* ``pip search <query>``: **Buscar** en Pypi.
+* ``pip check``: Comprobar **incompatibilidades** entre paquetes instalados.
+* ``pip freeze``: Generar **listado de dependencias**. Profundizaremos sobre este comando más adelante.
+
+----
+
+:id: comandos-pip-install-title
+
+Parámetros útiles de ``pip install``
+------------------------------------
 
 ----
 
 :id: comandos-pip-install-1
-
-Parámetros útiles de ``pip install``
-------------------------------------
 
 Editable
 ^^^^^^^^
@@ -169,51 +176,50 @@ Usando ``-e``, se instala usando ``develop``. Esto es, que el paquete puede *edi
 
 .. code-block::
 
-    pip install -e ~/Projects/myProject
+    $ pip install -e ~/Projects/myProject
     
 
 Upgrade
 ^^^^^^^
-Es posible llevar un paquete a la última versión con:
+Es posible llevar un paquete a la **última versión** con:
 
 .. code-block::
 
-    pip install --upgrade my-package
-    
+    $ pip install --upgrade my-package
 
 ----
 
-:id: comandos-pip-install-1
+:id: comandos-pip-install-2
     
 Pre-release
 ^^^^^^^^^^^
-Por defecto, Pypi instala los paquetes estables. Pero es posible instalar los que están en desarrollo:
+Por defecto, Pypi instala los paquetes **estables**. Pero es posible instalar los que están en **desarrollo**:
 
 .. code-block::
 
-    pip install --pre my-package
+    $ pip install --pre my-package
    
 
 Instalar en tu usuario
 ^^^^^^^^^^^^^^^^^^^^^^
-Pip instala los paquetes a nivel de sistema por defecto (lo cual requiere root). No obstante, es posible instalarlo en tu usuario.
+Pip instala los paquetes a nivel de sistema por defecto (lo cual requiere root). No obstante, es posible instalarlo en **tu usuario**.
 
 .. code-block::
 
-    pip install --user my-package
+    $ pip install --user my-package
     
     
 ----
 
-:id: comandos-pip-install-1
+:id: comandos-pip-install-3
 
 Cambiar o añadir repositorio
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Por defecto, ``pip`` usa como repositorio para descargar los paquetes::
+Por **defecto**, ``pip`` usa como *repositorio* para descargar los paquetes::
 
     https://pypi.python.org/simple/
     
-No obstante, es posible cambiarlo con ``--index-url``. Y añadir repositorios extra por si no estuviese el paquete en el rep. principal con el parámetro ``--extra-index-url``. Por ejemplo, para usar el repositorio de pruebas (para cuando se está aprendiendo a crear paquetes)::
+No obstante, es posible cambiarlo con ``--index-url``. Y añadir **repositorios extra** por si no estuviese el paquete en el *rep. principal* con el parámetro ``--extra-index-url``. Por ejemplo, para usar el *repositorio de pruebas* (para cuando se está aprendiendo a crear paquetes)::
 
     https://testpypi.python.org/simple/
     
@@ -225,7 +231,7 @@ Para saber cómo crear nuestro propio repositorio: https://github.com/pypiserver
 
 Instalar Pip
 ------------
-Por si no se encontrase instalado en el sistema, podemos instalarlo con::
+Por si no se encontrase instalado en el sistema, podemos **instalarlo** con::
 
     $ sudo apt install python-pip  # Debian/Ubuntu
     $ sudo dnf -y install python-pip  # Fedora
@@ -245,23 +251,23 @@ Conflictos entre paquetes
 
 Ya sabemos cómo instalar paquetes externos. 
 
-¿Pero qué pasa si tenemos conflictos entre ellos?
+*¿Pero qué pasa si tenemos conflictos entre ellos?*
 
 
 ----
 
 :id: conflictos-paquetes-2
 
-Ejemplo: tenemos 2 proyectos, A y B, con dependencia en diferentes versiones de Django.
+**Ejemplo:** tenemos *2 proyectos*, ``A`` y ``B``, con dependencia en diferentes versiones de Django.
 
-Proyecto A: requiere Django >= 1.8, <= 1.10.
-Proyecto B: requiere Django <=1.7, >= 1.4.
+* **Proyecto A:** requiere ``Django >= 1.8, <= 1.10``.
+* **Proyecto B:** requiere ``Django <=1.7, >= 1.4``.
 
 ----
 
 :id: conflictos-paquetes-3
 
-Solución: virtualenvs
+Solución: **virtualenvs**
 
 ----
 
@@ -269,19 +275,38 @@ Solución: virtualenvs
 
 Virtualenvs
 ===========
-Son entornos de Python independientes al del sistema, con sus propios paquetes instalados.
+Son *entornos* de Python **independientes al del sistema,** con sus propios paquetes instalados.
+
+*Algunos ejemplos de uso son...*
 
 ----
 
-:id: virtualenvs-ejemplos
+:id: virtualenvs-ejemplo-conflictos
 
-Gracias a los virtualenvs, podemos tener 2 entornos distintos: uno para el proyecto A, 
-con Django >= 1.9, y otro con Django <= 1.7 en el proyecto B.
+soluciona conflictos
+--------------------
 
-Además, podemos usar los virtualenvs para probar paquetes sin instalarlos a nivel del sistema,
-o para crear entornos a replicar en otros sistemas, cosa que veremos más adelante.
+Gracias a los virtualenvs, podemos tener 2 entornos distintos: uno para el *proyecto A*, 
+con ``Django >= 1.9``, y otro con ``Django <= 1.7`` en el *proyecto B*.
 
-Los virtualenvs también nos salvan de sorpresas al actualizar el sistema: un ``apt upgrade`` podría romper nuestros proyectos sin saberlo.
+----
+
+:id: virtualenvs-ejemplo-pruebas
+
+Para pruebas
+------------
+
+Además, podemos usar los virtualenvs **para probar paquetes sin instalarlos** a nivel del sistema,
+o para **crear entornos a replicar en otros sistemas**, cosa que veremos más adelante.
+
+----
+
+:id: virtualenvs-ejemplo-actualizacion
+
+Aislar y evitar sorpresas
+-------------------------
+
+Los virtualenvs también nos salvan de *sorpresas* al **actualizar el sistema**: un ``apt upgrade`` podría romper nuestros proyectos sin saberlo.
 
 ----
 
@@ -289,7 +314,7 @@ Los virtualenvs también nos salvan de sorpresas al actualizar el sistema: un ``
 
 Cómo crear un virtualenv
 ------------------------
-Tras instalar ``virtualenv``, podemos crear un virtualenv con::
+Tras instalar ``virtualenv``, podemos **crear un virtualenv** con::
     
     [nekmo@homura /tmp]$ virtualenv venv
     Running virtualenv with interpreter /usr/bin/python2
@@ -308,11 +333,11 @@ Debemos ejecutar::
     [nekmo@homura /tmp]$ source venv/bin/activate
     (venv)[nekmo@homura /tmp]$ 
     
-Véase que ahora, al inicio del *prompt*, tenemos entre paréntesis el nombre del virtualenv::
+Véase que ahora, al inicio del *prompt*, tenemos *entre paréntesis* el nombre del virtualenv::
     
-    **(venv)**[nekmo@homura /tmp]$ 
+    (venv)[nekmo@homura /tmp]$ 
     
-Esto significa, que tenemos el virtualenv activado. Podremos movernos con libertad, y seguiremos en el virtualenv mientras aparezca delante ese indicativo.
+Esto significa, que tenemos el virtualenv **activado**. Podremos movernos con libertad, y seguiremos en el virtualenv mientras aparezca delante ese indicativo.
 
 ----
 
@@ -333,7 +358,7 @@ Tras salir del virtualenv, podremos crear otro donde podremos instalar otros paq
 
 Instalar virtualenv
 -------------------
-Podemos instalarlo bien por el sistema, o haciendo uso de pip, como cualquier otro paquete:
+Podemos instalarlo bien **por el sistema**, o haciendo uso de **pip**, como cualquier otro paquete::
 
     $ sudo pip install virtualenv
     
@@ -370,7 +395,7 @@ Si miramos este directorio, encontramos::
 
 Esto *sustituye* el binario de ``python`` del sistema por el del virtualenv.
 
-Para determinar el directorio de las bibliotecas, lo que hace es buscarse el directorio que contiene ``./lib/pythonX.Y/os.py`` desde el directorio del ejecutable de Python. Si no se encuentra, se van bajando niveles hasta encontrarlo::
+Para determinar el directorio de las bibliotecas, lo que hace es buscarse el directorio que **contiene** ``./lib/pythonX.Y/os.py`` desde el directorio del ejecutable de Python. Si no se encuentra, se van **bajando niveles** hasta encontrarlo::
 
 
     ./venv/bin/lib/python2.7/os.py << No existe, sigo bajando...
@@ -382,7 +407,7 @@ Para determinar el directorio de las bibliotecas, lo que hace es buscarse el dir
 
 Pero ahora tengo muchos virtualenvs...
 
-¿cómo los gestiono?
+**¿cómo los gestiono?**
 
 ----
 
@@ -390,7 +415,7 @@ Pero ahora tengo muchos virtualenvs...
 
 Virtualenvwrapper
 =================
-Permite gestionar los virtualenvs identificándolos por un nombre, y organizados en un directorio común. Para instalarlo, usamos de nuevo ``pip``::
+Permite gestionar los virtualenvs *identificándolos por un nombre*, y organizados en un directorio común. Para instalarlo, usamos de nuevo ``pip``::
 
     $ sudo pip install virtualenv
     
@@ -420,7 +445,7 @@ Usamos el comando ``mkvirtualenv <name>``. Si ponemos el argumento ``-p <binario
 
     $ mkvirtualenv -p /usr/bin/python3 my-venv
     
-Al crear un proyecto, entraremos automáticamente en el.
+Al crear un proyecto, *entraremos automáticamente en el*.
 
 ----
 
@@ -428,11 +453,11 @@ Al crear un proyecto, entraremos automáticamente en el.
 
 Salir y entrar en el virtualenv
 -------------------------------
-Para salir del virtualenv, el comando es igual que con los virtualenv de serie::
+Para **salir** del virtualenv, el comando es igual que con los virtualenv de serie::
 
     $ deactivate
     
-Y para volver a entrar, usamos ``workon``::
+Y para volver a **entrar**, usamos ``workon``::
 
     $ workon my-venv
     
@@ -442,7 +467,7 @@ Y para volver a entrar, usamos ``workon``::
 
 Proyectos
 ---------
-Cuando se crea un virtualenv con ``mkproject <project name>``, se crea un virtualenv y adicionalmente un directorio en ``$PROJECT_HOME``, que es nuestro directorio de proyectos. Cada vez que se entre en el virtualenv, se activará el virtualenv y además, se accederá el directorio del proyecto::
+Cuando se crea un virtualenv con ``mkproject <project name>``, se crea un virtualenv y adicionalmente un directorio en ``$PROJECT_HOME``, que es nuestro *directorio de proyectos*. Cada vez que se entre en el virtualenv, se activará el virtualenv y además, se accederá el **directorio del proyecto**::
 
     mkproject my-project
 
@@ -455,9 +480,9 @@ El resto de funciones son exactamente iguales a las de cualquier otro virtualenv
 Comandos fuera del virtualenv
 -----------------------------
 
-* ``workon <venv>``	Entrar en un virtualenv
-* ``mkvirtualenv <venv>``: **Crear** un virtualenv
-* ``mkproject <proj>``: **Crea** un directorio de **proyecto** con su correspondiente virtualenv
+* ``workon <venv>``: **Entrar** en un virtualenv.
+* ``mkvirtualenv <venv>``: **Crear** un virtualenv.
+* ``mkproject <proj>``: **Crea** un directorio de **proyecto** con su correspondiente virtualenv.
 * ``mktmpenv``: **Crea** un virtualenv sin nombre y **temporal**, que al hacer deactivate se autodestruye.
 * ``rmvirtualenv <venv>``: **Borrar** un virtualenv. En el caso de proyectos, no borra el dir. de proyecto.
 * ``allvirtualenv <command>``: **Ejecutar** un comando en **todos los venv**. Útil para actualizar pip.
@@ -469,13 +494,13 @@ Comandos fuera del virtualenv
 Comandos dentro del virtualenv
 ------------------------------
 
-* ``deactivate``	Salir del virtualenv actual
-* ``cdvirtualenv``	Ir al directorio ~/.virtualenvs/<venv>
-* ``cdsitepackages``	Ir al directorio ~/.virtualenvs/<venv>/lib/PythonX.Y/site-packages
-* ``cdproject``	En el caso de proyectos, volver al directorio del proyecto.
-* ``wipeenv``	Borrar todos los paquetes del venv.
-* ``add2virtualenv <dir 1>[ <dir 2>]``	Permite añadir directorios al site-packages del virtualenv sin instalarlos
-* ``toggleglobalsitepackages``	Permite o deshabilita que se pueda acceder a paquetes del sistema en el virtualenv.
+* ``deactivate``: **Salir** del virtualenv actual.
+* ``cdvirtualenv``: Ir al directorio *~/.virtualenvs/<venv>*.
+* ``cdsitepackages``: Ir al directorio *~/.virtualenvs/<venv>/lib/PythonX.Y/site-packages*.
+* ``cdproject``: En el caso de proyectos, *volver al directorio del proyecto*.
+* ``wipeenv``: **Borrar** todos los **paquetes** del venv.
+* ``add2virtualenv <dir 1>[ <dir 2>]``: Permite añadir directorios al site-packages del virtualenv sin instalarlos
+* ``toggleglobalsitepackages``: Habilita o deshabilita que se puedan usar a **paquetes del sistema** en el virtualenv.
 
 ----
 
@@ -483,11 +508,11 @@ Comandos dentro del virtualenv
 
 Scripts personalizables (hooks)
 -------------------------------
-*Virtualenvwrapper* permite personalizar las acciones cuando se interactúa con los virtualenvs. Por ejemplo, ``postactivate`` permite ejecutar cuandos al activar el virtualenv, o ``postmkvirtualenv`` ejecutar comandos al crear un nuevo virtualenv. Esto puede usarse para iniciar servicios o instalar paquetes.
+*Virtualenvwrapper* permite personalizar las acciones cuando se interactúa con los virtualenvs. Por ejemplo, ``postactivate`` permite ejecutar cuandos al activar el virtualenv, o ``postmkvirtualenv`` **ejecutar comandos** al crear un nuevo virtualenv. Esto puede usarse para *iniciar servicios* o *instalar paquetes*.
 
 Un listado completo de los scripts se encuentra en: http://virtualenvwrapper.readthedocs.io/en/latest/scripts.html
 
-Es posible crear scripts por cada virtualenv o de forma global.
+Es posible crear scripts *por cada virtualenv* o *de forma global*.
 
 ----
 
@@ -495,7 +520,7 @@ Es posible crear scripts por cada virtualenv o de forma global.
 
 Requirements
 ============
-Tras instalar los paquetes que necesitamos, podemos querer replicar la misma instalación que ya funciona en otro equipo, como por ejemplo pasarlo a producción. Esto podemos lograrlo gracias al archivo ``requirements.txt``.
+Tras instalar los paquetes que necesitamos, podemos querer **replicar la misma instalación** que ya funciona en otro equipo, como por ejemplo pasarlo a **producción**. Esto podemos lograrlo gracias al archivo ``requirements.txt``.
 
 En este archivo apuntamos las dependencias necesarias para que un proyecto funcione. Por ejemplo::
 
@@ -509,11 +534,11 @@ En este archivo apuntamos las dependencias necesarias para que un proyecto funci
 
 :id: instalar-requirements
 
-Luego podemos instalar las dependencias mediante::
+Luego podemos **instalar las dependencias** mediante::
 
     pip install -r requirements.txt
     
-Con esto podemos replicar la instalación de la máquina original en otras máquinas.
+Con esto podemos **replicar la instalación** de la *máquina original* en *otras máquinas*.
 
 ----
 
@@ -521,7 +546,7 @@ Con esto podemos replicar la instalación de la máquina original en otras máqu
 
 pip freeze
 ----------
-El comando ``pip freeze`` nos permite generar un listado de las dependencias instaladas con la versión con el formato ``paquete==versión`` por cada línea. Podemos usar este comando para generar el archivo ``requirements.txt`` con las dependencias exactas que hay en el virtualenv actual::
+El comando ``pip freeze`` nos permite generar un **listado de las dependencias instaladas** con la versión con el formato ``paquete==versión`` por cada línea. Podemos usar este comando para generar el archivo ``requirements.txt`` con las **dependencias exactas** que hay en el virtualenv actual::
 
     $ pip freeze > requirements.txt
     
@@ -531,7 +556,7 @@ El comando ``pip freeze`` nos permite generar un listado de las dependencias ins
 
 Constraints
 -----------
-No obstante, aunque el método anterior asegura que se replique el entorno al 100%, en ocasiones podemos no desear instalar ciertas cosas, como dependencias para desarrollo, o que instalamos para pruebas, pero también queremos asegurar que se instalan las versiones correctas de los paquetes y sus dependencias, para evitar problemas. Para ello podemos usar el constraints::
+En ocasiones, podemos no desear instalar *ciertos paquetes* en la máquina de producción, como *los de desarrollo*, o los instalados *por pruebas*; pero también queremos asegurar que se instalan las **versiones correctas** de los paquetes y sus dependencias, para evitar problemas. Para ello podemos usar **constraints**::
 
     $ pip freeze > constraints.txt
   
@@ -539,7 +564,7 @@ No obstante, aunque el método anterior asegura que se replique el entorno al 10
 
 :id: constraints-2
   
-Luego, en el requirements especificamos lo que nosotros quisimos instalar explícitamente, y el constraints se asegurará de instalar las versiones correctas de los paquetes y sus dependencias, pero no se instalarán los paquetes del constraints que no estén especificados en el requirements::
+Luego, en *el requirements* especificamos lo que nosotros quisimos **instalar explícitamente**, y *el constraints* se asegurará de instalar las **versiones correctas** de los paquetes y sus dependencias, pero no se instalarán los paquetes del *constraints* que no estén especificados en el *requirements*::
 
     requirements.txt
     ----------------
@@ -550,7 +575,7 @@ Luego, en el requirements especificamos lo que nosotros quisimos instalar explí
 
 :id: constraints-3
   
-Y el ``constraints.txt`` generado automáticamente usando ``pip freeze > constraints.txt``::
+Y el ``constraints.txt`` **generado automáticamente** usando ``pip freeze > constraints.txt``::
 
     constraints.txt
     ---------------
@@ -570,12 +595,12 @@ Y el ``constraints.txt`` generado automáticamente usando ``pip freeze > constra
 Otras utilidades
 ================
 
-* ``pipdeptree``: Representa las dependencias instaladas en forma de árbol. Ayuda a comprender qué paquete instaló cual.
-* ``Pipfile``: Otra forma de trabajar con los archivos de requirements, que facilita distinguir entre entornos y qué paquetes se instalaron explícitamente.
-* ``pipenv``: Aúna en uno ``virtualenv``, ``Pipfile`` y ``Pip``. Crea virtualenvs automáticamente en tu proyecto.
-* ``pip-tools``: Ayuda a mantener los paquetes actualizados. Usando archivos de dependencias propios, se compilan los archivos de requirements.
-* ``compare-requirements``: Compara archivos de ``requirements.txt`` y permite compararlos con los requirements del venv.
-* ``curd``: Alternativa compatible con ``pip``, que le ofrece mayor velocidad en la instalación de paquetes.
+* ``pipdeptree``: Representa las *dependencias* instaladas en *forma de árbol*. Ayuda a comprender **qué paquete instaló cual**.
+* ``Pipfile``: Otra forma de trabajar con los archivos de requirements, que facilita *distinguir entre entornos* y *qué paquetes se instalaron explícitamente*.
+* ``pipenv``: Aúna en uno ``virtualenv``, ``Pipfile`` y ``Pip``. *Crea virtualenvs automáticamente* en tu proyecto.
+* ``pip-tools``: Ayuda a **mantener los paquetes actualizados**. Usando archivos de dependencias propios, se compilan los archivos de requirements.
+* ``compare-requirements``: Compara archivos de ``requirements.txt`` y permite *compararlos* con los requirements del venv.
+* ``curd``: Alternativa compatible con ``pip``, que le ofrece **mayor velocidad** en la instalación de paquetes.
 
 ----
 

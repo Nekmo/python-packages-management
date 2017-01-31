@@ -3,6 +3,7 @@
 
 :data-transition-duration: 500
 :css: css/presentation.css
+:css: css/monokai.css
 
 ----
 
@@ -62,7 +63,7 @@ Ejemplo: instalar requests
 
 Para instalar el paquete ``requests``, que facilita las consultas http:
 
-.. code-block::
+.. code-block:: bash
 
     $ sudo pip install requests
 
@@ -122,7 +123,7 @@ Especificar versión
 
 Por si hubiese incompatibilidades, es posible **restringir la versión**:
 
-.. code-block::
+.. code-block:: bash
 
     pip install 'Django>=1.7'
     pip install 'Django==1.8.3'
@@ -141,7 +142,7 @@ Puedes instalarlo de infinidad de otras formas:
 * Usando una **url**: ``pip install http://domain/myPackage.zip``
 * Con un **VCS** (Git/Hg/Bzr/Svn).
 
-.. code-block::
+.. code-block:: bash
 
     $ pip install git+https://github.com/Nekmo/os3.git@master#egg=os3
 
@@ -174,7 +175,7 @@ Editable
 ^^^^^^^^
 Usando ``-e``, se instala usando ``develop``. Esto es, que el paquete puede *editarse* en local y no hace falta reinstalarlo para aplicar los cambios.
 
-.. code-block::
+.. code-block:: bash
 
     $ pip install -e ~/Projects/myProject
     
@@ -183,7 +184,7 @@ Upgrade
 ^^^^^^^
 Es posible llevar un paquete a la **última versión** con:
 
-.. code-block::
+.. code-block:: bash
 
     $ pip install --upgrade my-package
 
@@ -195,7 +196,7 @@ Pre-release
 ^^^^^^^^^^^
 Por defecto, Pypi instala los paquetes **estables**. Pero es posible instalar los que están en **desarrollo**:
 
-.. code-block::
+.. code-block:: bash
 
     $ pip install --pre my-package
    
@@ -204,7 +205,7 @@ Instalar en tu usuario
 ^^^^^^^^^^^^^^^^^^^^^^
 Pip instala los paquetes a nivel de sistema por defecto (lo cual requiere root). No obstante, es posible instalarlo en **tu usuario**.
 
-.. code-block::
+.. code-block:: bash
 
     $ pip install --user my-package
     
@@ -231,13 +232,17 @@ Para saber cómo crear nuestro propio repositorio: https://github.com/pypiserver
 
 Instalar Pip
 ------------
-Por si no se encontrase instalado en el sistema, podemos **instalarlo** con::
+Por si no se encontrase instalado en el sistema, podemos **instalarlo** con:
+
+.. code-block:: bash
 
     $ sudo apt install python-pip  # Debian/Ubuntu
     $ sudo dnf -y install python-pip  # Fedora
     $ sudo pacman -S python-pip
     
-Y si no con::
+Y si no con:
+
+.. code-block:: bash
 
     $ python get-pip.py
     
@@ -314,7 +319,9 @@ Los virtualenvs también nos salvan de *sorpresas* al **actualizar el sistema**:
 
 Cómo crear un virtualenv
 ------------------------
-Tras instalar ``virtualenv``, podemos **crear un virtualenv** con::
+Tras instalar ``virtualenv``, podemos **crear un virtualenv** con:
+
+.. code-block:: bash
     
     [nekmo@homura /tmp]$ virtualenv venv
     Running virtualenv with interpreter /usr/bin/python2
@@ -328,12 +335,16 @@ Tras instalar ``virtualenv``, podemos **crear un virtualenv** con::
 
 Cómo entrar en un virtualenv
 ----------------------------
-Debemos ejecutar::
+Debemos ejecutar:
+
+.. code-block:: bash
     
     [nekmo@homura /tmp]$ source venv/bin/activate
     (venv)[nekmo@homura /tmp]$ 
     
-Véase que ahora, al inicio del *prompt*, tenemos *entre paréntesis* el nombre del virtualenv::
+Véase que ahora, al inicio del *prompt*, tenemos *entre paréntesis* el nombre del virtualenv:
+
+.. code-block:: bash
     
     (venv)[nekmo@homura /tmp]$ 
     
@@ -345,7 +356,9 @@ Esto significa, que tenemos el virtualenv **activado**. Podremos movernos con li
 
 Cómo salir de un virtualenv
 ---------------------------
-Debemos ejecutar ``deactivate``. Tras ejecutarlo, desaparecerá el nombre del virtualenv en el prompt::
+Debemos ejecutar ``deactivate``. Tras ejecutarlo, desaparecerá el nombre del virtualenv en el prompt:
+
+.. code-block:: bash
     
     (venv)[nekmo@homura /tmp]$ deactivate 
     [nekmo@homura /tmp]$
@@ -358,7 +371,9 @@ Tras salir del virtualenv, podremos crear otro donde podremos instalar otros paq
 
 Instalar virtualenv
 -------------------
-Podemos instalarlo bien **por el sistema**, o haciendo uso de **pip**, como cualquier otro paquete::
+Podemos instalarlo bien **por el sistema**, o haciendo uso de **pip**, como cualquier otro paquete:
+
+.. code-block:: bash
 
     $ sudo pip install virtualenv
     
@@ -368,7 +383,9 @@ Podemos instalarlo bien **por el sistema**, o haciendo uso de **pip**, como cual
 
 Cómo funciona
 -------------
-El archivo ``./bin/activate`` del ``venv`` es un fichero en bash, que si lo leemos, encontramos::
+El archivo ``./bin/activate`` del ``venv`` es un fichero en bash, que si lo leemos, encontramos:
+
+.. code-block:: bash
 
     PATH="$VIRTUAL_ENV/bin:$PATH"
     export PATH
@@ -379,7 +396,9 @@ Con esto lo que hacemos es añadir el directorio ``./bin/`` al ``$PATH``.
 
 :id: como-funcionan-virtualenvs-2
 
-Si miramos este directorio, encontramos::
+Si miramos este directorio, encontramos:
+
+.. code-block:: bash
 
     (test)[nekmo@homura /tmp/env]$ ls -1
     activate
@@ -395,8 +414,10 @@ Si miramos este directorio, encontramos::
 
 Esto *sustituye* el binario de ``python`` del sistema por el del virtualenv.
 
-Para determinar el directorio de las bibliotecas, lo que hace es buscarse el directorio que **contiene** ``./lib/pythonX.Y/os.py`` desde el directorio del ejecutable de Python. Si no se encuentra, se van **bajando niveles** hasta encontrarlo::
+Para determinar el directorio de las bibliotecas, lo que hace es buscarse el directorio que **contiene** ``./lib/pythonX.Y/os.py`` desde el directorio del ejecutable de Python. Si no se encuentra, se van **bajando niveles** hasta encontrarlo:
 
+
+.. code-block:: bash
 
     ./venv/bin/lib/python2.7/os.py << No existe, sigo bajando...
     ./venv/lib/python2.7/os.py << ¡Existe! ¡Usaré este directorio!
@@ -415,7 +436,9 @@ Pero ahora tengo muchos virtualenvs...
 
 Virtualenvwrapper
 =================
-Permite gestionar los virtualenvs *identificándolos por un nombre*, y organizados en un directorio común. Para instalarlo, usamos de nuevo ``pip``::
+Permite gestionar los virtualenvs *identificándolos por un nombre*, y organizados en un directorio común. Para instalarlo, usamos de nuevo ``pip``:
+
+.. code-block:: bash
 
     $ sudo pip install virtualenv
     
@@ -441,7 +464,9 @@ La primera línea es donde se guardarán los *virtualenvs*. La segunda, donde cr
 
 Crear un virtualenv con virtualenvwrapper
 -----------------------------------------
-Usamos el comando ``mkvirtualenv <name>``. Si ponemos el argumento ``-p <binario python>``, podremos cambiar el ejecutable de Python a usar::
+Usamos el comando ``mkvirtualenv <name>``. Si ponemos el argumento ``-p <binario python>``, podremos cambiar el ejecutable de Python a usar:
+
+.. code-block:: bash
 
     $ mkvirtualenv -p /usr/bin/python3 my-venv
     
@@ -453,11 +478,15 @@ Al crear un proyecto, *entraremos automáticamente en el*.
 
 Salir y entrar en el virtualenv
 -------------------------------
-Para **salir** del virtualenv, el comando es igual que con los virtualenv de serie::
+Para **salir** del virtualenv, el comando es igual que con los virtualenv de serie:
+
+.. code-block:: bash
 
     $ deactivate
     
-Y para volver a **entrar**, usamos ``workon``::
+Y para volver a **entrar**, usamos ``workon``:
+
+.. code-block:: bash
 
     $ workon my-venv
     
@@ -467,7 +496,9 @@ Y para volver a **entrar**, usamos ``workon``::
 
 Proyectos
 ---------
-Cuando se crea un virtualenv con ``mkproject <project name>``, se crea un virtualenv y adicionalmente un directorio en ``$PROJECT_HOME``, que es nuestro *directorio de proyectos*. Cada vez que se entre en el virtualenv, se activará el virtualenv y además, se accederá el **directorio del proyecto**::
+Cuando se crea un virtualenv con ``mkproject <project name>``, se crea un virtualenv y adicionalmente un directorio en ``$PROJECT_HOME``, que es nuestro *directorio de proyectos*. Cada vez que se entre en el virtualenv, se activará el virtualenv y además, se accederá el **directorio del proyecto**:
+
+.. code-block:: bash
 
     mkproject my-project
 
@@ -522,7 +553,9 @@ Requirements
 ============
 Tras instalar los paquetes que necesitamos, podemos querer **replicar la misma instalación** que ya funciona en otro equipo, como por ejemplo pasarlo a **producción**. Esto podemos lograrlo gracias al archivo ``requirements.txt``.
 
-En este archivo apuntamos las dependencias necesarias para que un proyecto funcione. Por ejemplo::
+En este archivo apuntamos las dependencias necesarias para que un proyecto funcione. Por ejemplo:
+
+.. code-block:: bash
 
     requirements.txt
     ----------------
@@ -534,7 +567,9 @@ En este archivo apuntamos las dependencias necesarias para que un proyecto funci
 
 :id: instalar-requirements
 
-Luego podemos **instalar las dependencias** mediante::
+Luego podemos **instalar las dependencias** mediante:
+
+.. code-block:: bash
 
     pip install -r requirements.txt
     
@@ -546,7 +581,9 @@ Con esto podemos **replicar la instalación** de la *máquina original* en *otra
 
 pip freeze
 ----------
-El comando ``pip freeze`` nos permite generar un **listado de las dependencias instaladas** con la versión con el formato ``paquete==versión`` por cada línea. Podemos usar este comando para generar el archivo ``requirements.txt`` con las **dependencias exactas** que hay en el virtualenv actual::
+El comando ``pip freeze`` nos permite generar un **listado de las dependencias instaladas** con la versión con el formato ``paquete==versión`` por cada línea. Podemos usar este comando para generar el archivo ``requirements.txt`` con las **dependencias exactas** que hay en el virtualenv actual:
+
+.. code-block:: bash
 
     $ pip freeze > requirements.txt
     
@@ -556,7 +593,9 @@ El comando ``pip freeze`` nos permite generar un **listado de las dependencias i
 
 Constraints
 -----------
-En ocasiones, podemos no desear instalar *ciertos paquetes* en la máquina de producción, como *los de desarrollo*, o los instalados *por pruebas*; pero también queremos asegurar que se instalan las **versiones correctas** de los paquetes y sus dependencias, para evitar problemas. Para ello podemos usar **constraints**::
+En ocasiones, podemos no desear instalar *ciertos paquetes* en la máquina de producción, como *los de desarrollo*, o los instalados *por pruebas*; pero también queremos asegurar que se instalan las **versiones correctas** de los paquetes y sus dependencias, para evitar problemas. Para ello podemos usar **constraints**:
+
+.. code-block:: bash
 
     $ pip freeze > constraints.txt
   
@@ -564,7 +603,9 @@ En ocasiones, podemos no desear instalar *ciertos paquetes* en la máquina de pr
 
 :id: constraints-2
   
-Luego, en *el requirements* especificamos lo que nosotros quisimos **instalar explícitamente**, y *el constraints* se asegurará de instalar las **versiones correctas** de los paquetes y sus dependencias, pero no se instalarán los paquetes del *constraints* que no estén especificados en el *requirements*::
+Luego, en *el requirements* especificamos lo que nosotros quisimos **instalar explícitamente**, y *el constraints* se asegurará de instalar las **versiones correctas** de los paquetes y sus dependencias, pero no se instalarán los paquetes del *constraints* que no estén especificados en el *requirements*:
+
+.. code-block:: bash
 
     requirements.txt
     ----------------
@@ -575,7 +616,9 @@ Luego, en *el requirements* especificamos lo que nosotros quisimos **instalar ex
 
 :id: constraints-3
   
-Y el ``constraints.txt`` **generado automáticamente** usando ``pip freeze > constraints.txt``::
+Y el ``constraints.txt`` **generado automáticamente** usando ``pip freeze > constraints.txt``:
+
+.. code-block:: bash
 
     constraints.txt
     ---------------

@@ -13,6 +13,12 @@
 Gestión de paquetes y entornos en Python
 ########################################
 
+.. note::
+
+    Buenas. Estoy aquí para presentar la gestión de paquetes y entornos en Python. Esta presentación es de iniciación, aunque para no aburrir a los más avanzados incluiré algunos detalles poco conocidos. Por querer contentar a todo el mundo, la presentación ha quedado más extensa que lo planeado, por lo que seguramente no de tiempo a hacer demostraciones, y tendré que ir más rápido de lo que em gustaría. Esta misma presentación está disponible en Github, por si queréis volverla a ver.
+    
+    Los que habéis empezado a aprender Python, tal vez no hayáis tenido la necesidad de usar más bibliotecas que las incluidas. Esto es gracias a que, como decimos...
+
 ----
 
 :id: baterias
@@ -21,13 +27,17 @@ Se dice que...
 
 Python trae **baterías incluidas**
 
+.. note::
+
+    Python, trae pilas incluidas.
+
 ----
 
 :id: baterias-imagen
 
 .. image:: images/Python_batteries_included.jpg
    :height: 300px
-
+   
 ----
 
 :id: casi-1
@@ -45,6 +55,10 @@ CASI
 :id: usar-python
 
 Cuando Python no incluye lo que necesitamos, podemos instalarlo a través de ``Pip``.
+
+.. note::
+
+    Pero en ocasiones, no incluye lo que necesitamos, y para eso tenemos Pip.
 
 ----
 
@@ -66,6 +80,10 @@ Para instalar el paquete ``requests``, que facilita las consultas http:
 .. code-block:: bash
 
     $ sudo pip install requests
+    
+.. note::
+
+    Requests es una biblioteca que hace más humano el realizar consultas a servidores http.
 
 ----
 
@@ -79,6 +97,10 @@ Para instalar el paquete ``requests``, que facilita las consultas http:
 * **Los módulos más descargados**: http://pypi-ranking.info/alltime
 * Tira de Google.
 
+.. note::
+
+    Y para encontrar más bibliotecas geniales para completar Python, aquí tenéis algunos enlaces. El primero es especialmente recomendable. Es un listado por categorías con lo mejor de Python. Sólo lo mejor.
+
 ----
 
 :id: donde-paquetes-2
@@ -87,6 +109,10 @@ La mayoría de paquetes Python dicen **cómo instalarlos** *usando Pip*
 
 .. image:: images/pip_install_sqlalchemy.png
    :height: 300px
+   
+.. note::
+
+    Para saber cómo instalarlos mediante Pip, sólo hay que leer la documentación del paquete. En la mayoría dicen cómo. Por ejemplo, aquí la de SQLAlchemy diciendo cómo.
 
 ----
 
@@ -100,11 +126,19 @@ https://pypi.python.org/pypi
 
 Además, puedes subir **tus propios paquetes**.
 
+.. note::
+
+    ¿Pero dónde residen realmente estos paquetes? En los repositorios oficiales de Python.
+
 ----
 
 :id: pypi-2
 
 .. image:: images/pypi-python-org.png
+
+.. note::
+
+    Aquí tenéis una captura de cómo es.
 
 ----
 
@@ -113,6 +147,10 @@ Además, puedes subir **tus propios paquetes**.
 También puedes echarle un vistazo al **próximo** portal de *Pypi*:
 
 .. image:: images/pypi-org.png
+
+.. note::
+
+    Y éste es el que será el nuevo portal del repositorio.
 
 ----
 
@@ -129,6 +167,10 @@ Por si hubiese incompatibilidades, es posible **restringir la versión**:
     pip install 'Django==1.8.3'
     pip install 'Django~=1.8'  # 1.8.x
     pip install 'Django>=1.8.2,<=1.8.10'
+    
+.. note::
+
+    Pero los paquetes tienen también dependencias. Y en ocasiones es necesario restringir la versión.
 
 ----
 
@@ -145,6 +187,10 @@ Puedes instalarlo de infinidad de otras formas:
 .. code-block:: bash
 
     $ pip install git+https://github.com/Nekmo/os3.git@master#egg=os3
+    
+.. note::
+
+    Ya hemos visto el repositorio oficial. Pero en ocasiones no es así, y hace falta instalarlo por otro medio. Por suerte, Python soporta bastantes medios. Por ejemplo, es posible instalarlo de Github usando Git.
 
 ----
 
@@ -160,12 +206,20 @@ Otros comandos de ``pip`` de interés
 * ``pip check``: Comprobar **incompatibilidades** entre paquetes instalados.
 * ``pip freeze``: Generar **listado de dependencias**. Profundizaremos sobre este comando más adelante.
 
+.. note::
+
+    Aquí una lista de los comandos más útiles de Pip. Aunque parezcan básicos, ``easy_install`` no permitía en su momento ni desinstalar paquetes.
+
 ----
 
 :id: comandos-pip-install-title
 
 Parámetros útiles de ``pip install``
 ------------------------------------
+
+.. note::
+
+    Y aquí parámetros de Pip install, el subcomando más empleado de Pip.
 
 ----
 
@@ -188,6 +242,11 @@ Es posible llevar un paquete a la **última versión** con:
 
     $ pip install --upgrade my-package
 
+    
+.. note::
+
+    Editable permite tener tu proyecto en local, y seguir mejorándolo y usándolo en otros proyectos al mismo tiempo. No hará falta reinstalar por cada mejora. Upgrade es para actualizar, como su nombre dice.
+    
 ----
 
 :id: comandos-pip-install-2
@@ -210,6 +269,10 @@ Pip instala los paquetes a nivel de sistema por defecto (lo cual requiere root).
     $ pip install --user my-package
     
     
+.. note::
+
+    ``--pre`` permite instalar versiones de paquetes que aún no son estables. Con ``--user`` puedes instalar paquetes en tu usuario, por separado de los del sistema.
+    
 ----
 
 :id: comandos-pip-install-3
@@ -225,6 +288,11 @@ No obstante, es posible cambiarlo con ``--index-url``. Y añadir **repositorios 
     https://testpypi.python.org/simple/
     
 Para saber cómo crear nuestro propio repositorio: https://github.com/pypiserver/pypiserver
+
+
+.. note::
+
+    Y con ``--index-url`` y ``--extra-index-url`` se puede cambiar o añadir el repositorio a usar. También podemos crear nuestro propio repositorio.
 
 ----
 
@@ -244,8 +312,13 @@ Y si no con:
 
 .. code-block:: bash
 
+    $ wget https://bootstrap.pypa.io/get-pip.py
     $ python get-pip.py
-    
+   
+
+.. note::
+
+    Pip se encuentra ya instalado en muchos sistemas GNU/Linux, pero es posible instalarlo por el sistema o con un script.
     
 ----
 
@@ -258,6 +331,9 @@ Ya sabemos cómo instalar paquetes externos.
 
 *¿Pero qué pasa si tenemos conflictos entre ellos?*
 
+.. note::
+
+    Pero a medida que se instalan paquetes, nos encontramos con conflictos entre ellos, sobre todo cuando instalamos paquetes que tienen como dependencia otros paquetes.
 
 ----
 
@@ -268,11 +344,19 @@ Ya sabemos cómo instalar paquetes externos.
 * **Proyecto A:** requiere ``Django >= 1.8, <= 1.10``.
 * **Proyecto B:** requiere ``Django <=1.7, >= 1.4``.
 
+.. note::
+
+    Por ejemplo, tenemos 2 proyectos, uno nuevo usando una de las versiones más nuevas de Django, y otro más antiguo que requiere una versión anterior de Django. ¿Qué podemos hacer?
+
 ----
 
 :id: conflictos-paquetes-3
 
 Solución: **virtualenvs**
+
+.. note::
+
+    Virtualenvs.
 
 ----
 
@@ -284,6 +368,10 @@ Son *entornos* de Python **independientes al del sistema,** con sus propios paqu
 
 *Algunos ejemplos de uso son...*
 
+.. note::
+
+    Los virtualenvs son entornos aislados e independientes, y en cada uno de ellos podemos instalar una versión de Django y Python.
+
 ----
 
 :id: virtualenvs-ejemplo-conflictos
@@ -293,6 +381,10 @@ soluciona conflictos
 
 Gracias a los virtualenvs, podemos tener 2 entornos distintos: uno para el *proyecto A*, 
 con ``Django >= 1.9``, y otro con ``Django <= 1.7`` en el *proyecto B*.
+
+.. note::
+
+     Tendremos un virtualenv por proyecto, ejecutándose los proyectos dentro de sus virtualenvs.
 
 ----
 

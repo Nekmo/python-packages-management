@@ -1,0 +1,248 @@
+// http://www.colourlovers.com/palette/1225538/Wait_For_My_Signal
+
+$color1: #3AFCD9;
+$color2: #FF4066;
+$color3: #FFF1B0;
+$color4: #82E8AE;
+
+.reveal {
+    strong {
+        color: $color2;
+    }
+    
+    em {
+        color: $color3;
+    }
+    
+    tt {
+        color: $color3;
+        background: #93A1A1;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: monospace;
+    }
+    
+    pre.highlight {
+        padding: 10px;
+        background: #1b1b1b;
+        font-size: 120%;
+        word-break: break-all;
+        white-space: pre-wrap;
+    }
+    
+    h1 {
+        tt {
+            font-family: "League Gothic", Impact, sans-serif;
+        }
+    }
+}
+
+
+#baterias {
+    font-size: 300%;
+}
+
+
+
+#casi-1 {
+    font-size: 300%;
+    
+    em {
+        font-size: 120%;
+    }
+}
+
+#casi-2 {
+    font-size: 800%;
+    color: $color1;
+}
+
+#usar-python {
+    font-size: 150%;
+}
+
+#comandos-pip {
+    h1 {
+        letter-spacing: 0;
+    }
+}
+
+#comandos-pip-install-title {
+    h1 {
+        line-height: 1.1;
+    }
+}
+
+#comandos-pip-install-1, #comandos-pip-install-2, #comandos-pip-install-3 {
+    h1 {
+        font-size: 210%;
+    }
+        
+    >h1:nth-child(4) {
+        margin-top: 60px;
+    }
+    
+    pre.highlight {
+        font-size: 105%;
+    }
+}
+
+#instalar-pip {
+    pre:nth-child(3) {
+        font-size: 90%;
+    }
+}
+
+#conflictos-paquetes-1 {
+    em {
+        font-size: 180%;
+    }
+}
+
+#conflictos-paquetes-3 {
+    font-size: 500%;
+}
+
+#instalar-virtualenvs {
+    pre {
+        font-size: 75%;
+    }
+}
+
+#entrar-virtualenv {
+    pre:nth-child(3) {
+        font-size: 75%;
+    }
+}
+
+#salir-virtualenv {
+    pre {
+        font-size: 90%;
+    }
+}
+
+#como-funcionan-virtualenvs-2 {
+    pre {
+        font-size: 105%;
+    }
+}
+
+#como-funcionan-virtualenvs-3 {
+    pre {
+        font-size: 85%;
+    }
+}
+
+#gestionar-virtualenvs {
+    font-size: 250%;
+    
+    *:nth-child(2) {
+        font-size: 120%;
+    }
+}
+
+#configurar-virtualenvwrapper {
+    pre {
+        font-size: 105%;
+    }
+}
+
+#crear-virtualenvwrapper {
+    h1 {
+        font-size: 290%;
+    }
+    
+    pre {
+        font-size: 90%;
+    }
+}
+
+#comandos-dentro-virtualenvwrapper {
+    h1 {
+        font-size: 200%;
+    }
+}
+
+#hooks-virtualenvwrapper {
+    h1 {
+        font-size: 250%;
+    }    
+}
+
+#requirements {
+    pre {
+        font-size: 100%;
+    }
+}
+
+#constraints-3 {
+    pre {
+        font-size: 100%;
+    }
+}
+
+#utilidades {
+    h1 {
+        font-size: 250%;
+    }
+}
+
+.reveal {
+    .warning {
+        background: #ffe7a7;
+        color: #1e1e1e;
+        padding: 10px;
+    }
+}
+
+.reveal section img {
+    border: 0;
+    box-shadow: none;
+    background: none;
+}
+
+#cms {
+    h1 {
+        font-size: 1200%;
+    }
+}
+
+#django-def {
+    h1 {
+        color: #4aed4e;
+    }
+}
+
+#django-features {
+    h1 {
+        text-align: left;
+        font-size: 200%;
+    }
+}
+
+#djangocms-def {
+    h2 {
+        color: #a1d7e1;
+    }
+    h3 {
+        color: #e15e86;
+    }
+}
+
+#apphook-polls-urls {
+    h1 {
+        font-size: 250%;
+    }
+}
+
+#djangocms-ending-1 {
+    h2 {
+        color: #62d942;
+    }
+    h3 {
+        color: #42c9d9;
+    }
+    h4+h4 {
+        color: #d94242;
+    }
+}

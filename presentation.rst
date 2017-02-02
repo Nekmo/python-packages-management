@@ -520,7 +520,7 @@ Si miramos este directorio, encontramos:
 
 .. code-block:: bash
 
-    (test)[nekmo@homura /tmp/env]$ ls -1
+    (test)[nekmo@homura /tmp/env/bin]$ ls -1
     activate
     ...
     easy_install
@@ -573,7 +573,7 @@ Permite gestionar los virtualenvs *identificándolos por un nombre*, y organizad
 
 .. code-block:: bash
 
-    $ sudo pip install virtualenv
+    $ sudo pip install virtualenvwrapper
     
 .. note::
 

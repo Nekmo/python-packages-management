@@ -396,6 +396,10 @@ Para pruebas
 Además, podemos usar los virtualenvs **para probar paquetes sin instalarlos** a nivel del sistema,
 o para **crear entornos a replicar en otros sistemas**, cosa que veremos más adelante.
 
+.. note::
+
+    También podemos usarlo para probar paquetes sin necesidad de instalarlos en el sistema.
+
 ----
 
 :id: virtualenvs-ejemplo-actualizacion
@@ -404,6 +408,10 @@ Aislar y evitar sorpresas
 -------------------------
 
 Los virtualenvs también nos salvan de *sorpresas* al **actualizar el sistema**: un ``apt upgrade`` podría romper nuestros proyectos sin saberlo.
+
+.. note::
+
+    Y por si fuera poco, nos protege ante sorpresas indeseadas. Por ejemplo, si no usásemos virtualenvs, podríamos cargarnos nuestros proyectos sólo por actualizar el sistema.
 
 ----
 
@@ -420,6 +428,10 @@ Tras instalar ``virtualenv``, podemos **crear un virtualenv** con:
     New python executable in venv/bin/python2
     Also creating executable in venv/bin/python
     Installing setuptools, pip...done.
+    
+.. note::
+
+    Para crear un virtualenv, sólo debemos usar el comando ``virtualenv``, junto con el nombre del mismo. Se creará un directorio con dicho nombre donde nos encontremos.
 
 ----
 
@@ -442,6 +454,10 @@ Véase que ahora, al inicio del *prompt*, tenemos *entre paréntesis* el nombre 
     
 Esto significa, que tenemos el virtualenv **activado**. Podremos movernos con libertad, y seguiremos en el virtualenv mientras aparezca delante ese indicativo.
 
+.. note::
+
+    Para iniciar el virtualenv, cargamos el script ``activate`` al shell. Sabremos que está activado por el nombre del virtualenv al inicio de la línea de comandos.
+
 ----
 
 :id: salir-virtualenv
@@ -457,6 +473,10 @@ Debemos ejecutar ``deactivate``. Tras ejecutarlo, desaparecerá el nombre del vi
 
 Tras salir del virtualenv, podremos crear otro donde podremos instalar otros paquetes, manteniéndose aislados.
 
+.. note::
+
+    Para poder salir del virtualenv, usamos ``deactivate``. Tras hacerlo desaparecerá el nombre del virtualenv al inicio de la línea.
+
 ----
 
 :id: instalar-virtualenv
@@ -468,6 +488,10 @@ Podemos instalarlo bien **por el sistema**, o haciendo uso de **pip**, como cual
 .. code-block:: bash
 
     $ sudo pip install virtualenv
+    
+.. note::
+
+    Para instalarlo, podemos instalarlo por el sistema, o por ``pip``, que para eso está.
     
 ----
 
@@ -483,6 +507,10 @@ El archivo ``./bin/activate`` del ``venv`` es un fichero en bash, que si lo leem
     export PATH
 
 Con esto lo que hacemos es añadir el directorio ``./bin/`` al ``$PATH``.
+
+.. note::
+
+    Aunque todo esto parezca magia, en realidad no lo es. Si miramos el archivo ``activate``, vemos que modifica la variable ``$PATH`` para poner el directorio ``./bin`` del virtualenv como prioritario.
 
 ----
 
@@ -500,6 +528,11 @@ Si miramos este directorio, encontramos:
     **python**
     ...
 
+
+.. note::
+
+    Esto es porque si miramos dicho directorio, encontramos otro intérprete de ``python``, el del virtualenv.
+
 ----
 
 :id: como-funcionan-virtualenvs-3
@@ -514,6 +547,10 @@ Para determinar el directorio de las bibliotecas, lo que hace es buscarse el dir
     ./venv/bin/lib/python2.7/os.py << No existe, sigo bajando...
     ./venv/lib/python2.7/os.py << ¡Existe! ¡Usaré este directorio!
     
+.. note::
+
+    Así pues, usará éste en lugar del del sistema. El intérprete de Python usará a su vez la carpeta de bibliotecas que se encuentra junto con intérprete. Para ser exactos, buscará el archivo ``os.py`` como aquí se muestra, e irá bajando niveles hasta entontrarlo, en el caso de los virtualenvs, en el segundo nivel.
+    
 ----
 
 :id: gestionar-virtualenvs
@@ -521,6 +558,10 @@ Para determinar el directorio de las bibliotecas, lo que hace es buscarse el dir
 Pero ahora tengo muchos virtualenvs...
 
 **¿cómo los gestiono?**
+
+.. note::
+
+    Los virtualenvs son muy útiles, pero llega un momento en que tienes muchos. ¿Cómo gestionarlos?
 
 ----
 
@@ -533,6 +574,10 @@ Permite gestionar los virtualenvs *identificándolos por un nombre*, y organizad
 .. code-block:: bash
 
     $ sudo pip install virtualenv
+    
+.. note::
+
+    Virtualenvwrapper administra los virtualenvs por su nombre, y los guarda en un directorio propio centralizado. Para instalarlo, usamos de nuevo ``pip`` o el gestor de paquetes del sistema.
     
 ----
 
@@ -550,6 +595,10 @@ En el ``.bashrc``, añadimos lo siguiente:
 
 La primera línea es donde se guardarán los *virtualenvs*. La segunda, donde creamos nuestros *proyectos y trabajos*. Veremos más sobre esto más adelante.
 
+.. note::
+
+    Para configurarlo, debemos añadir al ``.bashrc`` el directorio donde se guardarán los virtualenvs. Adicionalmente, un directorio para nuestros proyectos.
+
 ----
 
 :id: crear-virtualenvwrapper
@@ -563,6 +612,10 @@ Usamos el comando ``mkvirtualenv <name>``. Si ponemos el argumento ``-p <binario
     $ mkvirtualenv -p /usr/bin/python3 my-venv
     
 Al crear un proyecto, *entraremos automáticamente en el*.
+
+.. note::
+
+    Con ``mkvirtualenv`` podemos crear un virtualenv. Además, con ``-p`` podemos definir el binario de Python a usar, lo cual permite diferenciar entre versiones de Python.
 
 ----
 
@@ -582,6 +635,10 @@ Y para volver a **entrar**, usamos ``workon``:
 
     $ workon my-venv
     
+.. note::
+
+    Para salir es igual que con los ``virtualenvs``, y con ``workon`` entramos de nuevo.
+    
 ----
 
 :id: proyectos-virtualenvwrapper
@@ -596,6 +653,10 @@ Cuando se crea un virtualenv con ``mkproject <project name>``, se crea un virtua
 
 El resto de funciones son exactamente iguales a las de cualquier otro virtualenv.
     
+.. note::
+
+    Con ``mkproject`` podemos crear un directorio para uno de nuestros proyectos, junto con un virtualenv a utilizar. Es igual que ``mkvirtualenv``, pero crea adicionalmente un directorio de proyecto, y además cuando entremos en el virtualenv, entraremos también en el directorio del proyecto.
+    
 ----
 
 :id: comandos-fuera-virtualenvwrapper
@@ -609,6 +670,10 @@ Comandos fuera del virtualenv
 * ``mktmpenv``: **Crea** un virtualenv sin nombre y **temporal**, que al hacer deactivate se autodestruye.
 * ``rmvirtualenv <venv>``: **Borrar** un virtualenv. En el caso de proyectos, no borra el dir. de proyecto.
 * ``allvirtualenv <command>``: **Ejecutar** un comando en **todos los venv**. Útil para actualizar pip.
+
+.. note::
+
+    Y aquí algunos de los comandos más usados sin necesidad de estar dentro del virtualenv.
 
 ----
 
@@ -625,6 +690,10 @@ Comandos dentro del virtualenv
 * ``add2virtualenv <dir 1>[ <dir 2>]``: Permite añadir directorios al site-packages del virtualenv sin instalarlos
 * ``toggleglobalsitepackages``: Habilita o deshabilita que se puedan usar a **paquetes del sistema** en el virtualenv.
 
+.. note::
+
+    Y estos otros son los que pueden usarse dentro del virtualenv.
+
 ----
 
 :id: hooks-virtualenvwrapper
@@ -637,6 +706,24 @@ Un listado completo de los scripts se encuentra en: http://virtualenvwrapper.rea
 
 Es posible crear scripts *por cada virtualenv* o *de forma global*.
 
+.. note::
+
+    Los hooks son scripts bash que se ejecutarán con ciertas acciones de virtualenvwrapper. Por ejemplo, ``postmkvirtualenv`` nos permitirá instalar paquetes automáticamente tras crear un virtualenv.
+
+----
+    
+Templates
+---------
+El parámetro ``-t`` definir un template a utilizar en la creación de un proyecto o virtualenv. Por ejemplo, para la estrictura de Django:
+
+.. code-block:: bash
+
+    $ mkproject -t django myproject
+    
+.. note::
+
+    Virtualenvwrapper permite usar un template al crear un proyecto o virtualenv. Por ejemplo, puede usarse el de Django para crear la estructura básica al crear un nuevo proyecto.
+    
 ----
 
 :id: requirements
@@ -655,6 +742,10 @@ En este archivo apuntamos las dependencias necesarias para que un proyecto funci
     six==1.10.0
     appdirs==1.4.0
     
+.. note::
+
+    Ahora que usamos virtualenvs, es posible que queramos compartir nuestras instalaciones, y establecer los requisitos para que nuestros proyectos funcionen en otras máquinas. Para ello, se usa un archivo en texto plano con el listado de los paquetes necesarios, y optativamente con su versión. Este archivo se llama ``requirements``.
+    
 ----
 
 :id: instalar-requirements
@@ -666,6 +757,10 @@ Luego podemos **instalar las dependencias** mediante:
     pip install -r requirements.txt
     
 Con esto podemos **replicar la instalación** de la *máquina original* en *otras máquinas*.
+
+.. note::
+    
+    Para instalar los paquetes que se encuentran en un ``requirements``, usamos el parámetro ``-r`` de ``pip install``
 
 ----
 
@@ -679,6 +774,10 @@ El comando ``pip freeze`` nos permite generar un **listado de las dependencias i
 
     $ pip freeze > requirements.txt
     
+.. note::
+
+    No obstante, ``Pip`` ofrece una utilidad para generar un archivo de este tipo. Es posible generar un listado con las dependencias y versiones exactas instaladas en nuestro virtualenv, por lo que la instalación debería ser la misma en cualquier máquina que lo utilice. Esto se logra con ``pip freeze``.
+    
 ----
 
 :id: constraints-1
@@ -690,6 +789,10 @@ En ocasiones, podemos no desear instalar *ciertos paquetes* en la máquina de pr
 .. code-block:: bash
 
     $ pip freeze > constraints.txt
+  
+.. note::
+
+    En ocasiones, podemos no querer recomendar instalar todas las dependencias que tenemos, sino sólo algunas. No obstante, podemos sí querer especificar qué versiones se usarán. Para ello, haremos un archivo ``constraints``, que será igual al ``requirements`` que hicimos antes...
   
 ----
 
@@ -703,6 +806,10 @@ Luego, en *el requirements* especificamos lo que nosotros quisimos **instalar ex
     ----------------
     -c constraints.txt
     pandas
+    
+.. note::
+
+    Pero en el ``requirements`` ponemos las dependencias a mano, y definimos el archivo de ``constraints`` con ``-c``. Esto no instalará las dependencias de dicho archivo, pero sí que forzará que toda dependencia instalada en el requirements, cumpla las versiones del ``constraints``.
   
 ----
 
@@ -722,6 +829,10 @@ Y el ``constraints.txt`` **generado automáticamente** usando ``pip freeze > con
     python-dateutil==2.6.0
     pytz==2016.10
     six==1.10.0
+    
+.. note::
+
+    Mientras que el ``requirements`` tiene las dependencias escritas a mano, el ``constraints`` se ha generado solo, como vemos aquí.
 
 ----
 
@@ -737,6 +848,10 @@ Otras utilidades
 * ``compare-requirements``: Compara archivos de ``requirements.txt`` y permite *compararlos* con los requirements del venv.
 * ``curd``: Alternativa compatible con ``pip``, que le ofrece **mayor velocidad** en la instalación de paquetes.
 
+.. note::
+
+    Aquí un listado de utilidades...
+    
 ----
 
 :id: acerca-de
